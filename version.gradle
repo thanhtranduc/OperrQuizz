@@ -1,0 +1,58 @@
+ext{
+    //app
+    compileSDKVersion = 28
+    minSDKVersion = 21
+    targetSDKVersion = 28
+
+    // support library for AndroidX
+    appcompatXVersion = "1.1.0"
+    recycleviewVersion = "1.1.0-beta04"
+    materialVersion = "1.1.0-beta01"
+    legacySupportVersion = "1.0.0"
+    vetordrawableVersion = "1.1.0"
+    biometricVersion = "1.0.0-beta02"
+    archXVersion = "2.0.0"
+    constraintLayoutVersion = "2.0.0-beta2"
+    workerVersion = "1.0.1"
+    browserVersion = "1.0.0"
+    navigationVersion = "2.0.0"
+    paletteVersion = "1.0.0"
+    corKtxVersion = "1.1.0"
+
+    androidx = [:]
+    androidx.appcompat = "androidx.appcompat:appcompat:$appcompatXVersion"
+    androidx.recyclerview = "androidx.recyclerview:recyclerview:$recycleviewVersion"
+    androidx.material = "com.google.android.material:material:$materialVersion"
+    androidx.supportv4 = "androidx.legacy:legacy-support-v4:$legacySupportVersion"
+    androidx.vectordrawable = "androidx.vectordrawable:vectordrawable:$vetordrawableVersion"
+    androidx.biometric = "androidx.biometric:biometric:$biometricVersion"
+    androidx.constraintlayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    androidx.work_ktx = "android.arch.work:work-runtime-ktx:$workerVersion"
+    androidx.browser = "androidx.browser:browser:${browserVersion}"
+    androidx.navigation_fragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    androidx.navigation_ui = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    androidx.palette = "androidx.palette:palette-ktx:${paletteVersion}"
+    androidx.core = "androidx.core:core-ktx:${corKtxVersion}"
+
+    lifecycle = [:]
+    lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$archXVersion"
+    lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$archXVersion"
+    lifecycle.reactive_streams = "androidx.lifecycle:lifecycle-reactivestreams:$archXVersion"
+    androidx.lifecycle = lifecycle
+
+
+    // test
+    unitTest = [:]
+    unitTest.junit = "junit:junit:4.12"
+    unitTest.mockito = "org.mockito:mockito-core:2.23.0"
+    unitTest.mockwebserver = "com.squareup.okhttp3:mockwebserver:3.14.1"
+    mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
+    unitTest.mockitoinline = "org.mockito:mockito-inline:2.13.0"
+    unitTest.mockk = "io.mockk:mockk:1.9"
+
+    androidTest = [:]
+    androidTest.runner = "androidx.test:runner:1.1.0"
+    androidTest.espresso_core = "androidx.test.espresso:espresso-core:3.1.0"
+    androidTest.arch_core = "android.arch.core:core-testing:2.0.0"
+    androidTest.ext_runner = "androidx.test.ext:junit:1.1.0"
+}

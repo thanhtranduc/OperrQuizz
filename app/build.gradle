@@ -1,0 +1,103 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+ext{
+    ext.versionMajor = 1
+    ext.versionMinor = 0
+    ext.versionPatch = 0
+    ext.versionName = "1.0"
+    VERSION_CODE = generateVersionCode()
+    VERSION_NAME = versionName
+}
+
+private Integer generateVersionCode() {
+    return ext.versionMajor * 10000 + ext.versionMinor * 100 + ext.versionPatch
+}
+
+
+android {
+    compileSdkVersion compileSDKVersion
+    defaultConfig {
+        applicationId "com.operr.quizz"
+        minSdkVersion minSDKVersion
+        targetSdkVersion targetSDKVersion
+        versionCode VERSION_CODE
+        versionName "$VERSION_NAME"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "operr"
+
+    productFlavors {
+
+        dev {
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            manifestPlaceholders = [partner: "operrdev"]
+        }
+
+        qa {
+            applicationIdSuffix ".qa"
+            versionNameSuffix "-qa"
+            manifestPlaceholders = [partner: "operrtest"]
+        }
+
+        prod {
+            manifestPlaceholders = [partner: "operr"]
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+
+
+    // support android
+    implementation androidx.appcompat
+    implementation androidx.recyclerview
+    implementation androidx.material
+    implementation androidx.supportv4
+    implementation androidx.vectordrawable
+    implementation androidx.biometric
+
+    // Arch libraries
+    implementation androidx.lifecycle.extensions
+    kapt androidx.lifecycle.compiler
+    implementation androidx.constraintlayout
+    implementation androidx.work_ktx
+
+    // test
+    testImplementation unitTest.junit
+    androidTestImplementation androidTest.runner
+    androidTestImplementation androidTest.espresso_core
+
+    // Dependencies for local unit tests
+    testImplementation unitTest.junit
+    testImplementation unitTest.mockito
+    testImplementation androidTest.arch_core
+    testImplementation unitTest.mockk
+
+    // Dependencies for Android unit tests
+    androidTestImplementation unitTest.junit
+    androidTestImplementation unitTest.mockito
+}
