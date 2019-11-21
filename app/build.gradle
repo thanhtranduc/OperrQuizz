@@ -70,7 +70,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
-
+    implementation "androidx.work:work-runtime-ktx:2.2.0"
 
     // support android
     implementation androidx.appcompat
@@ -84,7 +84,7 @@ dependencies {
     implementation androidx.lifecycle.extensions
     kapt androidx.lifecycle.compiler
     implementation androidx.constraintlayout
-    implementation androidx.work_ktx
+//    implementation androidx.work_ktx
 
     // test
     testImplementation unitTest.junit
