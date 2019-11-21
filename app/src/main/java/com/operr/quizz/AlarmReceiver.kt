@@ -9,8 +9,6 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
     companion object {
@@ -21,7 +19,6 @@ class AlarmReceiver : BroadcastReceiver() {
             }
             val pendingIntent: PendingIntent =
                 PendingIntent.getActivity(applicationContext, 0, intent, 0)
-            val currentDate = SimpleDateFormat("MM-dd-HH_mm", Locale.getDefault()).format(Date())
             val builder = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
                 .setColor(applicationContext.resources.getColor(R.color.colorAccent))
                 .setSmallIcon(R.drawable.ic_launcher_background)
@@ -31,10 +28,11 @@ class AlarmReceiver : BroadcastReceiver() {
                         R.drawable.ic_launcher_foreground
                     )
                 )
-                .setContentText("$currentDate content .......")
+                .setContentTitle("OPERR Driver")
+                .setContentText("You are on the break...")
                 .setStyle(
                     NotificationCompat.BigTextStyle()
-                        .bigText("$currentDate Much longer text that cannot fit one line...")
+                        .bigText("You are on the break")
                 )
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
@@ -65,5 +63,4 @@ class AlarmReceiver : BroadcastReceiver() {
             showNotify(context)
         }
     }
-
 }

@@ -5,21 +5,24 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.SystemClock
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import java.util.*
 
 /**
  * In this project I using alarmManager to control push notification because WorkManage namely
  * PeriodicWorkRequest work has a minimum interval of 15 minutes
  * {@link https://developer.android.com/reference/androidx/work/PeriodicWorkRequest}
  *
- * NOTE: This app don't run notification when device restart becasue this config has not implemented
- *
+ * NOTE: This app don't run notification when device restart because this config has not implemented
  *
  * **/
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        const val FIVE_MINUTE: Long = 1000 * 60 * 5
+    }
 
     private var alarmMgr: AlarmManager? = null
     private lateinit var alarmIntent: PendingIntent
@@ -35,13 +38,10 @@ class MainActivity : AppCompatActivity() {
         if (!isWorking) {
             alarmIntent =
                 PendingIntent.getBroadcast(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-            val calendar: Calendar = Calendar.getInstance().apply {
-                timeInMillis = System.currentTimeMillis()
-            }
             alarmMgr?.setInexactRepeating(
-                AlarmManager.RTC_WAKEUP,
-                calendar.timeInMillis,
-                1000 * 60 * 1,
+                AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime() + FIVE_MINUTE,
+                FIVE_MINUTE,
                 alarmIntent
             )
         } else {
