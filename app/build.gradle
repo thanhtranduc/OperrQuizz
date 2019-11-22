@@ -81,12 +81,14 @@ dependencies {
     implementation androidx.lifecycle.extensions
     kapt androidx.lifecycle.compiler
     implementation androidx.constraintlayout
-//    implementation androidx.work_ktx
 
     // test
     testImplementation unitTest.junit
     androidTestImplementation androidTest.runner
     androidTestImplementation androidTest.espresso_core
+    androidTestImplementation androidTest.ext_runner
+    testImplementation androidTest.ext_runner
+    androidTestImplementation androidTest.test_rule
 
     // Dependencies for local unit tests
     testImplementation unitTest.junit

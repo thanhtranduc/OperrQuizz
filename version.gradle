@@ -54,5 +54,6 @@ ext{
     androidTest.runner = "androidx.test:runner:1.1.0"
     androidTest.espresso_core = "androidx.test.espresso:espresso-core:3.1.0"
     androidTest.arch_core = "android.arch.core:core-testing:2.0.0"
-    androidTest.ext_runner = "androidx.test.ext:junit:1.1.0"
+    androidTest.ext_runner = "androidx.test.ext:junit:1.1.1"
+    androidTest.test_rule = "androidx.test:rules:1.2.0"
 }
